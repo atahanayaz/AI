@@ -1,0 +1,47 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Data files (too large for git)
+*.csv
+*.xlsx
+!problem_plecakowy_zestawy - ANG.xlsx
+!dataset_calculations.txt
+
+# BUT keep project datasets (needed for submission)
+!part1-decision-trees/data/*.csv
+!part2-naive-bayes/data/*.csv
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Output files
+*.png
+*.jpg
+*.pdf
+!documentation/*.pdf
+
+# BUT keep visualization PNGs (needed for submission)
+!part1-decision-trees/*.png
+!part3-genetic-algorithms/*.png
+!part4-fuzzy-logic/*.png
+
+# Temporary files
+*.tmp
+*.bak
+*~

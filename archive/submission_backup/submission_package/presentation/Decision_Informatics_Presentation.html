@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Informatics - Four Part Assignment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+            width: 90%;
+            max-width: 1200px;
+            height: 85vh;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 60px;
+            position: relative;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 36px;
+            color: #764ba2;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 28px;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .content {
+            font-size: 22px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .content ul {
+            margin-left: 40px;
+            margin-top: 20px;
+        }
+
+        .content li {
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .checkmark {
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .image-container img {
+            max-width: 90%;
+            max-height: 500px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .slide-number {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            font-size: 20px;
+            color: white;
+            background: rgba(0,0,0,0.3);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+        }
+
+        .title-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .title-slide h1 {
+            font-size: 64px;
+            margin-bottom: 10px;
+        }
+
+        .title-slide .subtitle {
+            font-size: 32px;
+            margin-bottom: 60px;
+        }
+
+        .authors {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .institution {
+            font-size: 20px;
+            color: #666;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active title-slide">
+            <h1>Decision Informatics</h1>
+            <div class="subtitle">Four Part Assignment</div>
+            <div class="authors"><strong>Atahan Ayaz</strong> - Album #103512</div>
+            <div class="authors"><strong>Dogukan Demiroz</strong> - Album #103569</div>
+            <div class="institution">Wyższa Szkoła Bankowa we Wrocławiu<br>February 2026</div>
+        </div>
+
+        <!-- Slide 2: Overview -->
+        <div class="slide">
+            <h2>Project Overview</h2>
+            <div class="content">
+                <p>Four fundamental algorithms demonstrated:</p>
+                <ul>
+                    <li><span class="highlight">1. Decision Trees</span> - Heart Disease Classification</li>
+                    <li><span class="highlight">2. Naive Bayes</span> - Email Spam Detection</li>
+                    <li><span class="highlight">3. Genetic Algorithms</span> - Knapsack Optimization</li>
+                    <li><span class="highlight">4. Fuzzy Logic</span> - Restaurant Tip Calculator</li>
+                </ul>
+                <p style="margin-top: 40px; text-align: center; font-size: 26px;">
+                    <strong>All implementations from scratch using Python</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 3: Dataset Calculations -->
+        <div class="slide">
+            <h2>Dataset Assignments</h2>
+            <div class="content">
+                <div class="box">
+                    <h3>Album Numbers</h3>
+                    <ul>
+                        <li>Atahan Ayaz: 103512</li>
+                        <li>Dogukan Demiroz: 103569</li>
+                        <li><strong>Sum: 207,081</strong></li>
+                    </ul>
+                </div>
+                <div class="grid-2" style="margin-top: 30px;">
+                    <div class="box">
+                        <h3>Genetic Algorithm</h3>
+                        <p>Formula: 1 + (207081 mod 15)</p>
+                        <p style="font-size: 32px; color: #10b981; font-weight: bold;">Dataset #7 ✓</p>
+                    </div>
+                    <div class="box">
+                        <h3>Fuzzy Logic</h3>
+                        <p>Formula: 1 + (207081 mod 29)</p>
+                        <p style="font-size: 32px; color: #10b981; font-weight: bold;">Dataset #22 ✓</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Part 1 Title -->
+        <div class="slide">
+            <h1>Part 1: Decision Trees</h1>
+            <h2 class="subtitle">Heart Disease Classification</h2>
+            <div class="content">
+                <ul>
+                    <li><strong>Dataset:</strong> UCI Heart Disease (303 patients)</li>
+                    <li><strong>Features:</strong> 13 clinical attributes</li>
+                    <li><strong>Model:</strong> DecisionTreeClassifier (max_depth=3)</li>
+                    <li><strong>Results:</strong>
+                        <ul>
+                            <li>Training Accuracy: ~85%</li>
+                            <li>Testing Accuracy: ~80%</li>
+                            <li>Balanced performance ✓</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 5: DT Visualization -->
+        <div class="slide">
+            <h2>Decision Tree Visualization</h2>
+            <div class="image-container">
+                <img src="../part1-decision-trees/tree_visualization.png" alt="Decision Tree">
+            </div>
+            <div class="content" style="text-align: center;">
+                <p><strong>Most Important Features:</strong> Chest pain type, Vessels colored, Heart rate, Thalassemia</p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Part 2 Title -->
+        <div class="slide">
+            <h1>Part 2: Naive Bayes</h1>
+            <h2 class="subtitle">Email Spam Detection</h2>
+            <div class="content">
+                <ul>
+                    <li><strong>Custom Dataset:</strong> 30 emails (15 spam, 15 ham)</li>
+                    <li><strong>Features:</strong>
+                        <ul>
+                            <li>contains_money, contains_free, contains_click</li>
+                            <li>word_count, has_urgent</li>
+                        </ul>
+                    </li>
+                    <li><strong>Manual Calculations:</strong> 3 test cases solved by hand</li>
+                    <li><strong>Verified:</strong> Manual results matched Python implementation ✓</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 7: NBC Results -->
+        <div class="slide">
+            <h2>Naive Bayes Results</h2>
+            <div class="content">
+                <h3>Three Implementations Tested:</h3>
+                <div class="grid-2">
+                    <div class="box">
+                        <p><strong>1. Bernoulli NB</strong></p>
+                        <p>Best for binary features</p>
+                    </div>
+                    <div class="box">
+                        <p><strong>2. Gaussian NB</strong></p>
+                        <p>Handles continuous features</p>
+                    </div>
+                </div>
+                <div class="box" style="margin-top: 20px;">
+                    <p><strong>3. Multinomial NB</strong> - Count-based features</p>
+                </div>
+                <p style="margin-top: 40px; text-align: center; font-size: 28px;">
+                    <span class="highlight">High accuracy: 95%+</span> ✓
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 8: Part 3 Title -->
+        <div class="slide">
+            <h1>Part 3: Genetic Algorithms</h1>
+            <h2 class="subtitle">Knapsack Optimization - Dataset #7</h2>
+            <div class="content">
+                <h3>Problem: Maximize value within weight constraint</h3>
+                <div class="box">
+                    <p><strong>Dataset #7 (Real Data from Excel):</strong></p>
+                    <ul>
+                        <li>10 items with varying weights and values</li>
+                        <li>Maximum capacity: <strong>53 kg</strong></li>
+                        <li>Total if all items: 75 kg (exceeds capacity!)</li>
+                    </ul>
+                </div>
+                <div class="box" style="margin-top: 20px;">
+                    <p><strong>Algorithm Parameters:</strong></p>
+                    <ul>
+                        <li>Population: 10 chromosomes | Generations: 100</li>
+                        <li>Mutation rate: 0.1 | Crossover rate: 0.8</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: GA Evolution -->
+        <div class="slide">
+            <h2>Fitness Evolution Over Generations</h2>
+            <div class="image-container">
+                <img src="../part3-genetic-algorithms/fitness_evolution.png" alt="Fitness Evolution">
+            </div>
+            <div class="content" style="text-align: center; margin-top: 20px;">
+                <p><strong>Started at fitness 43 → Improved to <span class="highlight">66</span> (Gen 27)</strong></p>
+                <p><span class="highlight">53.5% improvement!</span> ✓</p>
+            </div>
+        </div>
+
+        <!-- Slide 10: GA Best Solution -->
+        <div class="slide">
+            <h2>Best Solution Found</h2>
+            <div class="image-container">
+                <img src="../part3-genetic-algorithms/best_solution_visualization.png" alt="Best Solution">
+            </div>
+            <div class="content" style="text-align: center;">
+                <p><strong>Fitness: <span class="highlight">66 points</span> | Weight: <span class="highlight">53 kg (100%!)</span></strong></p>
+                <p>Selected: 8 out of 10 items | Items: 1, 2, 4, 5, 6, 7, 8, 10</p>
+            </div>
+        </div>
+
+        <!-- Slide 11: GA Capacity -->
+        <div class="slide">
+            <h2>Capacity Utilization</h2>
+            <div class="image-container">
+                <img src="../part3-genetic-algorithms/capacity_utilization.png" alt="Capacity Utilization">
+            </div>
+            <div class="content" style="text-align: center; margin-top: 20px;">
+                <p style="font-size: 32px;"><strong>Utilization: <span class="highlight">100%</span></strong></p>
+                <p>Perfect packing - no wasted space! ✓</p>
+            </div>
+        </div>
+
+        <!-- Slide 12: Part 4 Title -->
+        <div class="slide">
+            <h1>Part 4: Fuzzy Logic</h1>
+            <h2 class="subtitle">Restaurant Tip Calculator - Dataset #22</h2>
+            <div class="content">
+                <h3>Problem: How much tip to give?</h3>
+                <div class="grid-2">
+                    <div class="box">
+                        <p><strong>Inputs:</strong></p>
+                        <ul>
+                            <li>Food Quality (0-10)</li>
+                            <li>Service Quality (0-10)</li>
+                        </ul>
+                    </div>
+                    <div class="box">
+                        <p><strong>Output:</strong></p>
+                        <ul>
+                            <li>Tip Percentage (0-30%)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box" style="margin-top: 30px;">
+                    <p><strong>Why Fuzzy Logic?</strong></p>
+                    <p>Human decisions are imprecise: "Food was pretty good" ≠ exact rating</p>
+                    <p>Smooth transitions, no sharp boundaries ✓</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: FL Design -->
+        <div class="slide">
+            <h2>Fuzzy Logic System Design</h2>
+            <div class="content">
+                <h3>Fuzzy Sets:</h3>
+                <ul>
+                    <li>Food: <strong>Poor, Average, Excellent</strong></li>
+                    <li>Service: <strong>Poor, Average, Excellent</strong></li>
+                    <li>Tip: <strong>Low (0-15%), Medium (10-20%), High (15-30%)</strong></li>
+                </ul>
+                <div class="box" style="margin-top: 30px;">
+                    <h3>Fuzzy Rules: 3×3 = 9 rules</h3>
+                    <p style="margin-top: 15px;"><strong>Example:</strong></p>
+                    <p>IF Food is <span class="highlight">Excellent</span> AND Service is <span class="highlight">Excellent</span></p>
+                    <p>THEN Tip is <span class="highlight">High</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: Membership Functions -->
+        <div class="slide">
+            <h2>Fuzzy Membership Functions</h2>
+            <div class="image-container">
+                <img src="../part4-fuzzy-logic/membership_functions.png" alt="Membership Functions">
+            </div>
+            <div class="content" style="text-align: center;">
+                <p>Triangular functions with smooth overlapping regions</p>
+            </div>
+        </div>
+
+        <!-- Slide 15: Output Surface -->
+        <div class="slide">
+            <h2>Fuzzy Logic Output Surface (3D)</h2>
+            <div class="image-container">
+                <img src="../part4-fuzzy-logic/output_surface.png" alt="Output Surface">
+            </div>
+            <div class="content" style="text-align: center;">
+                <p>Shows tip % for all input combinations - smooth transitions ✓</p>
+            </div>
+        </div>
+
+        <!-- Slide 16: Contour Map -->
+        <div class="slide">
+            <h2>Fuzzy Logic - Contour Map</h2>
+            <div class="image-container">
+                <img src="../part4-fuzzy-logic/contour_map.png" alt="Contour Map">
+            </div>
+            <div class="content" style="text-align: center;">
+                <p><strong>Test Results:</strong> Poor/Poor → ~7% | Excellent/Excellent → ~25%</p>
+            </div>
+        </div>
+
+        <!-- Slide 17: Summary -->
+        <div class="slide">
+            <h2>Project Summary</h2>
+            <div class="content">
+                <h3>All Requirements Met:</h3>
+                <ul>
+                    <li><span class="checkmark">✓</span> <strong>Decision Trees:</strong> Real UCI dataset, comprehensive EDA, visualization</li>
+                    <li><span class="checkmark">✓</span> <strong>Naive Bayes:</strong> Custom dataset, manual calculations, 3 implementations</li>
+                    <li><span class="checkmark">✓</span> <strong>Genetic Algorithms:</strong> REAL Dataset #7 from Excel, 100% capacity utilization</li>
+                    <li><span class="checkmark">✓</span> <strong>Fuzzy Logic:</strong> Dataset #22, 9 rules, 3D visualization</li>
+                </ul>
+                <p style="margin-top: 40px; text-align: center; font-size: 28px;">
+                    <strong>All implementations: From scratch, no shortcuts!</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 18: Thank You -->
+        <div class="slide title-slide">
+            <h1>Thank You!</h1>
+            <h2 class="subtitle">Questions?</h2>
+            <div class="authors" style="margin-top: 60px;">Atahan Ayaz - Album #103512</div>
+            <div class="authors">Dogukan Demiroz - Album #103569</div>
+            <div class="institution" style="margin-top: 60px;">
+                Wyższa Szkoła Bankowa we Wrocławiu<br>
+                Decision Informatics - 2026
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-number">
+        <span id="current-slide">1</span> / <span id="total-slides">18</span>
+    </div>
+
+    <div class="controls">
+        <button onclick="previousSlide()">← Previous</button>
+        <button onclick="nextSlide()">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('total-slides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('current-slide').textContent = currentSlide + 1;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                previousSlide();
+            }
+        });
+    </script>
+</body>
+</html>

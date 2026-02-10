@@ -1,0 +1,22 @@
+Dataset Number Calculations
+============================
+
+Group Members:
+- Student 1: Album #103569
+- Student 2: Album #103512
+
+Sum of Album Numbers: 207081
+
+Genetic Algorithms (GA) - Backpack Problem Dataset:
+Formula: 1 + (sum mod 15)
+Calculation: 1 + (207081 mod 15) = 1 + 6 = 7
+► GA Dataset Number: 7
+
+Fuzzy Logic (FL) - Fuzzy Controller Dataset:
+Formula: 1 + (sum mod 29)
+Calculation: 1 + (207081 mod 29) = 1 + 21 = 22
+► FL Dataset Number: 22
+
+---
+Note: Include these calculations in your final report title page or introduction.
+Date: 2026-02-08
